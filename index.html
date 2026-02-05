@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="VLM-BTs">
+  <meta name="keywords" content="Multimodal Planning, Long-term Manipulation Tasks, Vision-Language Model, Behavior Tree">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VLM-BTs</title>
+
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="./static/images/logo3.svg">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/bulma-carousel.js"></script>
+  <style>
+    .results-carousel {
+        width: 80%;       /* Set to your desired width */
+        margin: 0 auto;   /* Center the carousel horizontally */
+    }
+
+  </style>
+<style>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    max-width:1000px;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .slider-item {
+  width: 100%; /* 让每个 .slider-item 填满 .slider-wrapper */
+  height: 100%; /* 让每个 .slider-item 填满 .slider-wrapper */
+  display: flex; /* 使用 Flexbox 布局来居中内容 */
+  justify-content: center; /* 水平居中内容 */
+  align-items: center; /* 垂直居中内容 */
+  flex-shrink: 0; /* 防止 flex 子元素缩小 */
+}
+
+/* 如果 .slider-item 包含图片 */
+.slider-item img {
+  width: 100%; /* 宽度填满 .slider-item */
+  height: auto; /* 高度自适应以保持图片比例 */
+  object-fit: cover; /* 覆盖整个区域，可能会剪裁某些部分 */
+}
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .left-btn {
+    left: 10px;
+  }
+  
+  .right-btn {
+    right: 10px;
+  }
+  
+  </style>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size: 2.7rem;">Towards Object-level Multimodal Task Planning for Long-term Robotic Manipulation <img src="./static/images/logo3.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;"> with Vision Language Model and Behavior Tree</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://evallhq.github.io/">Hanqian Luo</a><sup>1,2</sup>,</span>
+              <a href="https://aric.github.io/">Zezhi Liu</a><sup>1</sup>,</span>
+              <a href="https://www4.comp.polyu.edu.hk/~csjcao/">Jiannong Cao</a><sup>2</sup>,</span>
+			  <a href="https://qhemu.github.io/xiuxiuqi/">Xiuxiu Qi</a><sup>1,2</sup>,</span>
+			  <a href="https://wp.doc.ic.ac.uk/aese/people/julie-a-mccann/">Julie A. McCann</a><sup>3</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=SNyDfVoAAAAJ&hl=zh-CN&oi=ao">Yongchun Fang</a><sup>1</sup></span>
+            </span>
+          </div>
+      
+      <div class="is-size-5 publication-authors">
+		  <span class="author-block"><sup>1</sup>Nanakai University, </span>
+		  <span class="author-block"><sup>2</sup>The Hong Kong Polytechnic University, </span>
+		  <span class="author-block"><sup>3</sup>Imperial College London</span>
+      </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://nkrobotlab.github.io/VLM-BTs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://nkrobotlab.github.io/VLM-BTs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="./static/videos/video.mp4"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://nkrobotlab.github.io/VLM-BTs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Comming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="text-align: center;">
+      <img id="teaser" src="./static/images/top.png" alt="Teaser Image" 
+     style="width: 80%; display: block; margin-top: 0; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Our</span> proposed framework combines the Vision-Language Model (VLM) with the Behavior Tree (BT).
+      </h2>
+    </div>
+  </div>
+</section>
+  
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+Long-term robotic manipulation in open environments requires unifying multimodal understanding with reliable, geometry-aware execution.
+Classical robotic motion planning approaches demand extensive domain modeling and hand-crafted goal specifications, while emerging LLM/VLM pipelines propose semantically plausible yet lack feasibility guarantees and executable grounding. 
+To address the above limitations, we propose a hierarchical multimodal planning framework that combines VLM-based multimodal perception with behavior tree (BT) planning to bridge high-level semantic reasoning and low-level execution feasibility. 
+Our framework integrates natural language instructions with open-set visual geometry to generate object-level representations and language-conditioned prototype plans. 
+Then, a prompting-to-compilation scheme is designed to yield BT planning with explicit controller–status pairs, conditions of force, and geometric feasibility checks.
+The proposed framework is validated through real-world experiments across three long-term robotic manipulation tasks, showing higher task success than VLM-only and BT-only baselines and demonstrating robust, fully autonomous execution without human intervention.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content">
+     <h2>Main Contribution</h2>
+    <p>We propose a <strong> hierarchical multimodal planning framework </strong> for long-term robotic manipulation <img src="./static/images/logo3.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;"> that combines the strengths and overcomes the limitations of LLMs/VLMs and traditional task and motion planning (TAMP) methods.
+       The main contributions of our work are summarized as follows:</p>
+      </div>
+    <!-- Explanation of the diagram -->
+    <div class="content" style="margin-top: 20px;">
+    <ul>
+        <li>We integrate natural language instruction and open-set visual detection with RGB-D geometry to produce a list of sub-task goals with VLM, which include the instance-level prototype plans with language-conditioned filtering.</li>
+        <li>A prompting and compilation scheme is designed to convert LLM sub-task decompositions into the behavior tree (BT) model with explicit controller–status pairs, conditions of force, and geometric feasibility checks.</li>
+        <li>The efficacy of the proposed framework is evaluated through real-world experiments with three typical long-term manipulation tasks, providing empirical validation of its effectiveness on long-term manipulation tasks.</li>
+      </ul>
+      <p> Here we show a brief overview of the proposed hierarchical multimodal planning framework with <strong>VLM stack</strong> and <strong>BT model</strong>.</p>
+    <div style="text-align: center; margin-top: 20px;"> <!-- Center align the image container -->
+      <img src="./static/images/framework.png"
+           style="width: 95%; max-width: 1000px; height: auto; display: block; margin: 0 auto;" <!-- Make the image responsive and centered -->
+    </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Summary of the work -->
+    <div class="content">
+      <h2>Real-World Experiments</h2>
+      <p>We conduct a desktop-level task suite with several long-term robotic manipulation tasks to validate the proposed framework in real-world settings. Here we show the hardware and environmental configuration of the entire experiment.</p>
+		    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"> <!-- Center align the image container -->
+      <img src="./static/images/configuration.png"
+           style="width: 30%; max-width: 1000px; height: auto; display: block; margin: auto;" <!-- Make the image responsive and centered -->
+    </div>
+		<p>We consider three representative long-term desktop-level tasks with varying object and primitive action sets. For each task, we randomize the initial relative poses of visible objects within the current field of view to test robustness and repeatability.</p>
+		
+	<!-- Large plot display -->
+   
+	<div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px; margin-top: 20px; background-color: #f0f0f0; padding: 20px; border-radius: 8px; overflow: hidden;">
+	  
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp1-1.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Initial State (START)</p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp1-2.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;"><strong>KEY FRAME</strong></p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp1-3.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Final State (END)</p>
+	  </div>
+	
+	</div>
+
+	<div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px; margin-top: 20px; background-color: #f0f0f0; padding: 20px; border-radius: 8px; overflow: hidden;">
+	  
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp2-1.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Initial State (START)</p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp2-2.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;"><strong>KEY FRAME</strong></p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp2-3.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Final State (END)</p>
+	  </div>
+	
+	</div>
+
+	<div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px; margin-top: 20px; background-color: #f0f0f0; padding: 20px; border-radius: 8px; overflow: hidden;">
+	  
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp3-1.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Initial State (START)</p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp3-2.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;"><strong>KEY FRAME</strong></p>
+	  </div>
+	
+	  <div style="text-align: center; flex: 0 1 auto;">
+	    <img src="./static/images/exp3-3.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 4px; margin: 0 auto;" />
+	    <p style="margin-top: 10px;">Final State (END)</p>
+	  </div>
+	
+	</div>
+
+   </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="content" style="margin-bottom: 2rem;">
+      <h2>Example Results Analysis</h2>
+      <p>Our approach improves reliability by combining multimodal planning via VLM stack and controller–status verified BT execution, yielding robust long-term manipulation with no manual oversight.</p>
+    </div>
+
+    <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+      
+      <div class="video-carousel-wrapper">
+        
+        <button class="carousel-btn left-btn" onclick="scrollCarousel(-1)">
+          &#10094;
+        </button>
+
+        <div id="video-track" class="video-track">
+          
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video2.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video3.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video4.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video5.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-item">
+            <video poster="" autoplay controls muted loop playsinline>
+              <source src="./static/videos/video6.mp4" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+
+        <button class="carousel-btn right-btn" onclick="scrollCarousel(1)">
+          &#10095;
+        </button>
+
+      </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX (Coming soon)</h2>
+    <pre><code>......</code></pre>
+<!--     <pre><code>@article{Darioush2024ControlBench,
+  author    = {Darioush, Kevian and Usman, Syed and Xingang, Guo and Aaron, Havens and Geir, Dullerud and Peter, Seiler and Lianhui, Qin and Bin, Hu},
+  title     = {Capabilities of Large Language Models in Control Engineering: A Benchmark Study on GPT-4, Claude 3 Opus, and Gemini 1.0 Ultra},
+  journal   = {arXiv preprint arXiv:2404.03647},
+  year      = {2024},
+}</code></pre> -->
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website was built using the
+						<a href="https://nerfies.github.io/">Nerfies website</a> and the
+						<a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- <script>
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const sliderItems = document.querySelectorAll('.slider-item');
+  let currentIndex = 0;
+
+  document.querySelector('.left-btn').addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSliderPosition();
+    }
+  });
+
+  document.querySelector('.right-btn').addEventListener('click', () => {
+    if (currentIndex < sliderItems.length - 1) {
+      currentIndex++;
+      updateSliderPosition();
+    }
+  });
+
+  function updateSliderPosition() {
+    const newTransformValue = -currentIndex * 100; // Assuming each slide is 100% of the container width
+    sliderWrapper.style.transform = `translateX(${newTransformValue}%)`;
+  }
+</script> -->
+
+
+<script>
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const sliderItems = document.querySelectorAll('.slider-item');
+  let currentIndex = 0;
+
+  document.querySelector('.left-btn').addEventListener('click', () => {
+    // Modify this to go to the last image if currently at the first image
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = sliderItems.length - 1; // Go to the last image
+    }
+    updateSliderPosition();
+  });
+
+  document.querySelector('.right-btn').addEventListener('click', () => {
+    // Reset currentIndex to 0 if on the last image, otherwise increment
+    if (currentIndex < sliderItems.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Reset to the first image
+    }
+    updateSliderPosition();
+  });
+
+  function updateSliderPosition() {
+    const newTransformValue = -currentIndex * 100; // Assuming each slide is 100% of the container width
+    sliderWrapper.style.transform = `translateX(${newTransformValue}%)`;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+  const videos = [document.getElementById('with'), document.getElementById('without')];
+  
+  videos.forEach(video => {
+    video.addEventListener('volumechange', function () {
+      if (!video.muted) {
+        video.muted = true;
+      }
+    });
+  });
+});
+
+</script>
+
+
+<script>
+  // 防止点击过快导致动画错乱的锁
+  let isTransitioning = false;
+
+  function scrollCarousel(direction) {
+    if (isTransitioning) return; // 如果正在动画中，忽略点击
+
+    const track = document.getElementById('video-track');
+    const items = track.getElementsByClassName('video-item');
+    
+    // 确保有元素
+    if (items.length === 0) return;
+
+    // 获取单个元素的完整宽度 (宽度 + gap)
+    // 我们计算第一个元素的宽度 + 轨道设置的 gap (20px)
+    const itemWidth = items[0].offsetWidth + 20; 
+
+    isTransitioning = true; // 上锁
+
+    if (direction === 1) {
+      // === 向右点击 (Next) ===
+      
+      // 1. 先让轨道向左滑动一个单位
+      track.style.transition = 'transform 0.5s ease-in-out';
+      track.style.transform = `translateX(-${itemWidth}px)`;
+
+      // 2. 动画结束后...
+      setTimeout(() => {
+        // 把第一个元素移动到最后面 (DOM 操作)
+        track.appendChild(items[0]);
+        
+        // 瞬间取消动画，并重置位置 (欺骗人眼)
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        
+        isTransitioning = false; // 解锁
+      }, 500); // 500ms 必须对应 CSS 中的 transition 时间
+
+    } else {
+      // === 向左点击 (Prev) ===
+      
+      // 1. 先瞬间取消动画
+      track.style.transition = 'none';
+      
+      // 2. 把最后一个元素移动到最前面
+      track.insertBefore(items[items.length - 1], items[0]);
+      
+      // 3. 瞬间把轨道往左推一个单位 (为了抵消刚刚加在前面的元素，保持视觉不动)
+      track.style.transform = `translateX(-${itemWidth}px)`;
+
+      // 4. 下一帧恢复动画，并滑回 0
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s ease-in-out';
+        track.style.transform = 'translateX(0)';
+        
+        // 等动画结束解锁
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }, 10); // 短暂延迟确保浏览器渲染了位移
+    }
+  }
+</script>
+	
+</body>
+</html>
