@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="VLM-BTs">
-  <meta name="keywords" content="Multimodal Planning, Long-term Manipulation Tasks, Vision-Language Model, Behavior Tree">
+        content="SHARP">
+  <meta name="keywords" content="Robotic Manipulation, Visual Detection, Obstacle Avoidance, Scene Graph, Hierarchical Planning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VLM-BTs</title>
+  <title>SHARP</title>
 
 
   <script>
@@ -21,7 +21,7 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="./static/images/logo3.svg">
+  <link rel="icon" type="image/svg+xml" href="./static/images/logo.svg">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -108,23 +108,22 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="font-size: 2.7rem;">Towards Object-level Multimodal Task Planning for Long-term Robotic Manipulation <img src="./static/images/logo3.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;"> with Vision Language Model and Behavior Tree</h1>
+          <h1 class="title is-1 publication-title" style="font-size: 2.6rem;">SHARP<img src="./static/images/logo.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;">: A Semantic-Aware Hierarchical Planning Framework for Robotic Active Rearrangement under Limited Conditions </h1>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://evallhq.github.io/">Hanqian Luo</a><sup>1,2</sup>,</span>
               <a href="https://aric.github.io/">Zezhi Liu</a><sup>1</sup>,</span>
+              <a href="https://QinDeyun.github.io/">Deyun Qin</a><sup>1</sup>,</span>
               <a href="https://www4.comp.polyu.edu.hk/~csjcao/">Jiannong Cao</a><sup>2</sup>,</span>
-			  <a href="https://qhemu.github.io/xiuxiuqi/">Xiuxiu Qi</a><sup>1,2</sup>,</span>
-			  <a href="https://wp.doc.ic.ac.uk/aese/people/julie-a-mccann/">Julie A. McCann</a><sup>3</sup>,</span>
+			        <a href="https://shizhen.github.io/">Shizhen Wu</a><sup>1</sup>,</span>
               <a href="https://scholar.google.com/citations?user=SNyDfVoAAAAJ&hl=zh-CN&oi=ao">Yongchun Fang</a><sup>1</sup></span>
             </span>
           </div>
       
       <div class="is-size-5 publication-authors">
 		  <span class="author-block"><sup>1</sup>Nanakai University, </span>
-		  <span class="author-block"><sup>2</sup>The Hong Kong Polytechnic University, </span>
-		  <span class="author-block"><sup>3</sup>Imperial College London</span>
+		  <span class="author-block"><sup>2</sup>The Hong Kong Polytechnic University</span>
       </div>
 
           <div class="column has-text-centered">
@@ -178,7 +177,7 @@
 </section>
 
   
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body" style="text-align: center;">
       <img id="teaser" src="./static/images/top.png" alt="Teaser Image" 
@@ -188,7 +187,7 @@
       </h2>
     </div>
   </div>
-</section>
+</section> -->
   
 
 <!-- Paper abstract -->
@@ -199,13 +198,17 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-Long-term robotic manipulation in open environments requires unifying multimodal understanding with reliable, geometry-aware execution.
-Classical robotic motion planning approaches demand extensive domain modeling and hand-crafted goal specifications, while emerging LLM/VLM pipelines propose semantically plausible yet lack feasibility guarantees and executable grounding. 
-To address the above limitations, we propose a hierarchical multimodal planning framework that combines VLM-based multimodal perception with behavior tree (BT) planning to bridge high-level semantic reasoning and low-level execution feasibility. 
-Our framework integrates natural language instructions with open-set visual geometry to generate object-level representations and language-conditioned prototype plans. 
-Then, a prompting-to-compilation scheme is designed to yield BT planning with explicit controller–status pairs, conditions of force, and geometric feasibility checks.
-The proposed framework is validated through real-world experiments across three long-term robotic manipulation tasks, showing higher task success than VLM-only and BT-only baselines and demonstrating robust, fully autonomous execution without human intervention.
-          </p>
+Robotic manipulation in unstructured environments faces significant challenges, particularly under limited conditions such as varying illumination, occlusions, and restricted computational resources. 
+Traditional approaches often struggle to balance robust semantic perception with efficient task planning, especially when possible obstacles are physically unreachable while requiring active rearrangement. 
+To address the above issues, this paper proposes SHARP, a Semantic-aware Hierarchical Active Rearrangement Planning framework that couples robust vision perception with physics-aware task planning. 
+First, we architecturally reconstruct YOLO-World by specifically optimizing the network for enhanced multi-scale perception and improved occlusion robustness.
+This design effectively reduces the model size without compromising detection performance. 
+Second, we combine Dynamic Movement Primitives (DMP) with superquadric potential fields for obstacle modeling to generate adaptive, collision-free trajectories. 
+Crucially, a Dependency-Rich Scene Graph (DRSG) is constructed, which maps geometric occlusion relationships into topological connectivity based on physical reachability. 
+Utilizing the DRSG, the hierarchical planner dynamically switches between collision avoidance and active rearrangement for optimal action sequencing. 
+Comprehensive evaluations are conducted to validate the proposed framework, SHARP. 
+Quantitative experiments verify the efficacy of the modified perception modules through ablation tests, and geometric analysis qualitatively validates the adaptive obstacle-avoidance trajectory generation. 
+Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness and robustness in executing complex obstacle-aware manipulation tasks.          </p>
         </div>
       </div>
     </div>
@@ -213,8 +216,9 @@ The proposed framework is validated through real-world experiments across three 
 </section>
 <!-- End paper abstract -->
 
-  
-<section class="section">
+<!-- HIDDEN SECTION START -->
+
+<section class="section" style="display: none;">
   <div class="container is-max-desktop">
     <div class="content">
      <h2>Main Contribution</h2>
@@ -238,7 +242,7 @@ The proposed framework is validated through real-world experiments across three 
 </div>
 </section>
 
-<section class="section">
+<section class="section" style="display: none;">
   <div class="container is-max-desktop">
     <!-- Summary of the work -->
     <div class="content">
@@ -314,7 +318,7 @@ The proposed framework is validated through real-world experiments across three 
 </section>
 
 
-<section class="section">
+<section class="section" style="display: none;">
   <div class="container is-max-desktop">
     
     <div class="content" style="margin-bottom: 2rem;">
@@ -378,6 +382,7 @@ The proposed framework is validated through real-world experiments across three 
     </div>
     </div>
 </section>
+<!-- HIDDEN SECTION END -->
 
 
 <section class="section" id="BibTeX">
