@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="SHARP">
+        content="SHARP couples lightweight visual perception, superquadric-modulated trajectories, and dependency-rich scene graphs for robotic active object rearrangement.">
   <meta name="keywords" content="Robotic Manipulation, Visual Detection, Obstacle Avoidance, Scene Graph, Hierarchical Planning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SHARP</title>
@@ -34,13 +34,15 @@
   <link rel="stylesheet" href="static/css/index.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
   <script src="static/js/bulma-carousel.js"></script>
   <style>
+    .content p, .content li, .content figcaption {
+      text-wrap: pretty;
+    }
+
     .results-carousel {
         width: 80%;       /* Set to your desired width */
         margin: 0 auto;   /* Center the carousel horizontally */
@@ -102,23 +104,20 @@
 <body>
 
 
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="font-size: 2.6rem;">SHARP<img src="./static/images/logo.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;">: A Semantic-Aware Hierarchical Planning Framework for Robotic Active Rearrangement under Limited Conditions </h1>
+          <h1 class="title is-1 publication-title" style="font-size: 2.6rem;">SHARP<img src="./static/images/logo.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;">: Semantic-Aware Hierarchical Planning for Robotic Active Object Rearrangement from Limited Eye-in-Hand Observations </h1>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://evallhq.github.io/">Hanqian Luo</a><sup>1,2</sup>,</span>
-              <a href="https://aric.github.io/">Zezhi Liu</a><sup>1</sup>,</span>
-              <a href="https://QinDeyun.github.io/">Deyun Qin</a><sup>1</sup>,</span>
-              <a href="https://www4.comp.polyu.edu.hk/~csjcao/">Jiannong Cao</a><sup>2</sup>,</span>
-			        <a href="https://shizhen.github.io/">Shizhen Wu</a><sup>1</sup>,</span>
-              <a href="https://scholar.google.com/citations?user=SNyDfVoAAAAJ&hl=zh-CN&oi=ao">Yongchun Fang</a><sup>1</sup></span>
-            </span>
+            <span class="author-block"><a href="https://evallhq.github.io/">Hanqian Luo</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://aric.github.io/">Zezhi Liu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://QinDeyun.github.io/">Deyun Qin</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www4.comp.polyu.edu.hk/~csjcao/">Jiannong Cao</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://shizhen.github.io/">Shizhen Wu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=SNyDfVoAAAAJ&amp;hl=zh-CN&amp;oi=ao">Yongchun Fang</a><sup>1</sup></span>
           </div>
       
       <div class="is-size-5 publication-authors">
@@ -130,7 +129,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://nkrobotlab.github.io/SHARP"
+                <a href="./"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -139,7 +138,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://nkrobotlab.github.io/SHARP"
+                <a href="./"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -159,7 +158,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://nkrobotlab.github.io/SHARP"
+                <a href="./"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -198,17 +197,17 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-Robotic manipulation in unstructured environments faces significant challenges, particularly under limited conditions such as varying illumination, occlusions, and restricted computational resources. 
-Traditional approaches often struggle to balance robust semantic perception with efficient task planning, especially when the target is physically unreachable due to possible obstacles, requiring active rearrangement. 
-To address the above issues, this paper proposes SHARP, a Semantic-aware Hierarchical Active Rearrangement Planning framework that couples robust vision perception with physics-aware task planning. 
-First, we architecturally reconstruct YOLO-World by specifically optimizing the network for enhanced multi-scale perception and improved occlusion robustness.
-This design effectively reduces the model size without compromising detection performance. 
-Second, we combine Dynamic Movement Primitives (DMP) with superquadric potential fields for obstacle modeling to generate adaptive, collision-free trajectories. 
-Thirdly, a Dependency-Rich Scene Graph (DRSG) is constructed, which maps geometric occlusion relationships into topological connectivity based on physical reachability. 
-Utilizing the DRSG, the hierarchical planner dynamically switches between collision avoidance and active rearrangement for optimal action sequencing. 
-Comprehensive evaluations are conducted to validate the proposed framework, SHARP. 
-Specifically, quantitative ablation tests verify the efficacy of the modified perception modules, while geometric analysis qualitatively validates the adaptive obstacle-avoidance trajectory generation. 
-Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness and robustness in complex obstacle-aware manipulation tasks.
+Robotic manipulation in unstructured environments faces significant challenges, particularly under limited conditions such as varying illumination, occlusions, and restricted computational resources.
+Traditional approaches often struggle to balance robust semantic perception with efficient task planning, especially when the target is physically unreachable due to possible obstacles, requiring active rearrangement.
+To address the above issues, this paper proposes SHARP, a Semantic-aware Hierarchical Active Rearrangement Planning framework that couples robust visual perception with physics-aware task planning for a fixed-base manipulator using eye-in-hand observations.
+First, we architecturally reconstruct YOLO-World by optimizing the network for enhanced multi-scale perception and improved occlusion robustness.
+This design effectively reduces the model size without compromising detection performance.
+Second, we combine Dynamic Movement Primitives (DMPs) with superquadric potential fields for obstacle modeling to generate adaptive, collision-free trajectories.
+Thirdly, a Dependency-Rich Scene Graph (DRSG) is constructed, which maps geometric occlusion relationships into topological connectivity based on physical reachability.
+Utilizing the DRSG, the hierarchical planner dynamically switches between collision avoidance and active rearrangement for efficient action sequencing.
+Comprehensive evaluations are conducted to validate the proposed framework, SHARP.
+Specifically, ablation tests verify the efficacy of the modified perception modules, while geometric analysis and quantitative comparisons validate the adaptive obstacle-avoidance trajectory generation.
+Furthermore, extensive real-world experiments demonstrate SHARP&#x27;s effectiveness and robustness in complex obstacle-aware manipulation tasks.
           </p>
         </div>
       </div>
@@ -223,19 +222,19 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
   <div class="container is-max-desktop">
     <div class="content">
      <h2>Main Contribution</h2>
-    <p>We propose <strong>SHARP</strong><img src="./static/images/logo.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;">,  a novel semantic-aware hierarchical planning framework for robotic obstacle-aware manipulation tasks under limited conditions. The main contributions of our work are summarized as follows:</p>
+    <p>We propose <strong>SHARP</strong><img src="./static/images/logo.svg" alt="Logo" style="width:1em; height:1em; vertical-align:middle; margin: 0 0.2em;">, a semantic-aware hierarchical planning framework that couples lightweight visual perception with scene reachability analysis for obstacle-aware manipulation from limited eye-in-hand observations. The main contributions of our work are summarized as follows:</p>
       </div>
     <!-- Explanation of the diagram -->
     <div class="content" style="margin-top: 20px;">
     <ul>
-        <li>We propose an architecturally optimized visual perception model based on YOLO-World, which integrates a multi-scale lightweight perception block and an anti-occlusion feature enhancement module.</li>
-        <li>An adaptive trajectory generation method is developed that combines superquadric-based potential fields for obstacle modeling with dynamic movement primitives (DMPs).</li>
-        <li>A hierarchical planning strategy is introduced by using the dependency-rich scene graph (DRSG) to bridge semantic perception and motion planning.</li>
-        <li>Comprehensive evaluations, including quantitatively ablation studies and qualitative analysis, are conducted to validate the efficacy of each key component within the proposed framework. Extensive real-world experiments demonstrate that SHARP outperforms baselines across complex multi-object manipulation tasks.</li>
+        <li>We propose an architecturally optimized visual perception model based on YOLO-World, integrating a multi-scale lightweight perception (MSLP) block and an anti-occlusion feature enhancement (AOFE) module to reduce model complexity while preserving high detection accuracy.</li>
+        <li>We develop an adaptive trajectory generation method that combines superquadric-based potential fields with dynamic movement primitives (DMPs), generating collision-free grasping motions adapted to the estimated obstacle geometry.</li>
+        <li>We introduce a dependency-rich scene graph (DRSG) that couples semantic task dependencies with motion feasibility to coordinate target grasping, obstacle avoidance, and active rearrangement while reducing unnecessary relocations.</li>
+        <li>We evaluate the framework through detector comparisons, module ablations, quantitative trajectory tests, and real-world experiments against heuristic baselines and PDDLStream-Adaptive.</li>
       </ul>
       <p> Here we show a brief overview of the proposed <strong>S</strong>emantic-aware <strong>H</strong>ierarchical <strong>A</strong>ctive <strong>R</strong>earrangement <strong>P</strong>lanning framework:</p>
     <div style="text-align: center; margin-top: 20px;"> <!-- Center align the image container -->
-      <img src="./static/images/framework.jpg"
+      <img src="./static/images/framework.jpg" alt="Overview of the SHARP perception, trajectory generation, and hierarchical planning framework"
            style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0 auto;" >
            <!-- Make the image responsive and centered -->
     </div>
@@ -253,37 +252,46 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
     <!-- Summary of the work -->
     <div class="content" style="margin-top: 20px;">
       <ol>
-        <li>We architecturally reconstruct the network of the visual perception module by proposing two novel modules to reduce parameter redundancy and enhance robustness against cluttered contexts.</li>
+        <li>We architecturally reconstruct the visual perception network with MSLP and AOFE to reduce parameter redundancy and enhance robustness against cluttered contexts. MSLP combines multi-scale spatial encoding with channel attention, while AOFE refines high-level detection features through two-stage multiplicative interactions and a residual connection.
 
       <div style="--img-gap: 80px; display: flex; justify-content: center; gap: var(--img-gap); margin-top: 20px; margin-bottom: 20px; align-items: stretch;">
         <figure style="width: 55%; margin: 0; display: flex; flex-direction: column;">
           <div style="flex: 1; display: flex; align-items: flex-end;">
-            <img src="./static/images/mslp.jpg"
+            <img src="./static/images/mslp.jpg" alt="MSLP block with multi-scale spatial and channel-attention branches"
                 style="width: 100%; height: auto; object-fit: contain;">
           </div>
           <figcaption style="margin-top: 8px; text-align: center; font-size: 0.95rem; color: #000000;">The Multi-Scale Lightweight Perception Block</figcaption>
         </figure>
         <figure style="width: 40%; margin: 0; display: flex; flex-direction: column;">
           <div style="flex: 1; display: flex; align-items: flex-end;">
-            <img src="./static/images/aofe.jpg"
+            <img src="./static/images/aofe.jpg" alt="AOFE module with two-stage multiplicative interactions and a residual connection"
                 style="width: 100%; height: auto; object-fit: contain;">
           </div>
           <figcaption style="margin-top: 8px; text-align: center; font-size: 0.95rem; color: #000000;">The Anti-Occlusion Feature Enhancement Module</figcaption>
         </figure>
       </div>
 
-        <li>The adaptive obstacle-avoidance trajectory is generated via dynamic movement primitives (DMPs) with potential field modulations based on compact geometric modeling via superquadrics.</li>
 
-      <div style="text-align: center; margin-top: 20px;">
-        <img src="./static/images/pipeline.jpg"
+      <p>We evaluate the perception model on a custom dataset of 14 household object classes, collected with variations in illumination, viewpoint, and inter-object occlusion. Detector comparisons and module ablations assess detection accuracy and computational efficiency on the collected test set.</p>
+      <p>Our detector achieves 96.7% mAP<sub>50</sub> with 3.61 M parameters and 8.5 GFLOPs on the collected test set. Combining MSLP and AOFE improves detection accuracy while reducing the model's computational cost.</p>
+
+        </li>
+        <li>Adaptive obstacle-avoidance trajectories are generated by DMPs with potential fields constructed over compact superquadric models. Object masks and refined depth are used to reconstruct point clouds, which are fitted with superquadrics under a symmetry assumption.
+
+      <div style="text-align: center; margin: 20px 0;">
+        <img src="./static/images/pipeline.jpg" alt="Object segmentation, point cloud reconstruction, and superquadric fitting pipeline"
             style="width: 90%; max-width: 1000px; height: auto; display: block; margin: 0 auto;">
       </div>
-      <div style="text-align: center; margin-bottom: 20px;">
-        <img src="./static/images/trajectory.jpg"
+      <p>The same DMP weights, learned from one obstacle-free grasping demonstration, are reused across the obstacle configurations below. The unmodulated reference trajectories are shown in blue, and the adapted obstacle-avoidance trajectories in green.</p>
+      <div style="text-align: center; margin: 20px 0;">
+        <img src="./static/images/trajectory.jpg" alt="Reference and obstacle-avoidance trajectories in four fitted obstacle configurations"
             style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0 auto;">
       </div>
 
-        <li>A dependency-rich scene graph (DRSG) is produced to map geometric occlusion relationships into topological connectivity attributes for dynamic planning. Please visit <strong><a href="./static/videos/video.mp4" target="_blank">here</a></strong> to see more details about this part of our work.</li>
+      <p>Comparisons with APF and RRTConnect evaluate clearance, smoothness, path length, and computation time on 40 common planning instances. Our method produces smoother, shorter trajectories with greater gripper clearance, at a mean computation time of 8.6 ms.</p>
+
+        </li>
+        <li>The DRSG represents candidate blocking relations together with each object’s semantic task role. The hierarchical planner prioritizes a blocker that is also a requested target, verifies obstacle-avoidance trajectories, and selectively relocates non-target blockers when needed. Candidate motions undergo whole-arm feasibility checks before execution, and the graph is reconstructed from new eye-in-hand observations after each manipulation. See the <strong><a href="./static/videos/video.mp4" target="_blank" rel="noopener">experimental video</a></strong>.</li>
 
       </ol>
     </div>
@@ -295,22 +303,29 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
     <!-- Summary of the work -->
     <div class="content">
       <h2>Real-World Experiments</h2>
-      <p>The physical experimental platform employs a 7-DoF robotic manipulator equipped with a parallel gripper for task execution.</p>
+      <p>The physical platform uses a fixed-base 7-DoF manipulator with a parallel gripper and an eye-in-hand RealSense D435i RGB-D camera. Computation runs on the workstation equipped with an NVIDIA RTX 3080 Ti GPU.</p>
 		    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"> <!-- Center align the image container -->
       <img src="./static/images/configuration.jpg"
-           style="width: 30%; max-width: 1000px; height: auto; display: block; margin: auto;" <!-- Make the image responsive and centered -->
+           alt="Experimental platform with a 7-DoF manipulator, parallel gripper, and eye-in-hand camera" style="width: 30%; max-width: 1000px; height: auto; display: block; margin: auto;">
     </div>
-		<p>We evaluated the integrated SHARP framework in real-world multi-object manipulation tasks. To systematically analyze performance, we designed four task-level scenarios categorized by the complexity of object spatial relationships.</p>
+		<p>We evaluate SHARP in four task scenarios: <strong style="white-space: nowrap;">Level 1 (Sparse)</strong>, <strong style="white-space: nowrap;">Level 2 (Avoidable Occlusion)</strong>, <strong style="white-space: nowrap;">Level 3 (Physical Deadlock)</strong>, and <strong style="white-space: nowrap;">Level 4 (Semantic Conflict)</strong>.</p>
+
+      <p>The following sequence shows the robot navigating around a pear to grasp a target lemon and place it in the basket. The schematic overlay illustrates the fitted obstacle, gripper-clearance margin, and DMP trajectory used for obstacle avoidance.</p>
+      <figure id="obstacle-avoidance-grasp" style="margin: 20px 0;">
+        <img src="./static/images/gripper_clearance.jpg" alt="Initial scene, pear avoidance, and verified lemon grasp with a schematic gripper-clearance envelope and DMP trajectory" style="width: 65%; max-width: 1000px; height: auto; display: block; margin: 0 auto;">
+        <figcaption style="margin-top: 8px; text-align: center; font-size: 0.95rem; color: #000000;">Obstacle-Avoidance Grasping with Gripper Clearance</figcaption>
+      </figure>
+      <p>Further task executions across different levels are shown in the videos below.</p>
 
     <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px;">
       
       <div class="video-carousel-wrapper">
 
-        <button class="carousel-btn left-btn" onclick="scrollCarousel(-1)">
+        <button class="carousel-btn left-btn" onclick="scrollCarousel(-1, this)" aria-label="Show previous videos">
           &#10094;
         </button>
 
-        <div id="video-track" class="video-track">
+        <div class="video-track">
           <div class="video-group">
             <div class="video-group-title">Level 2 (Avoidable Occlusion)</div>
             <video poster="" autoplay controls muted loop playsinline>
@@ -334,24 +349,24 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
 
         </div>
 
-        <button class="carousel-btn right-btn" onclick="scrollCarousel(1)">
+        <button class="carousel-btn right-btn" onclick="scrollCarousel(1, this)" aria-label="Show next videos">
           &#10095;
         </button>
 
       </div>
     </div>
     
-    <p>Here we show some representative cases with two compared baselines.</p>
+    <p>The baseline examples illustrate two limitations: avoidance alone can fail when access is blocked, while proximity-based rearrangement can relocate objects unnecessarily. SHARP uses semantic task roles and verified trajectories to select when rearrangement is needed.</p>
 
     <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px;">
       
       <div class="video-carousel-wrapper">
 
-        <button class="carousel-btn left-btn" onclick="scrollCarousel(-1)">
+        <button class="carousel-btn left-btn" onclick="scrollCarousel(-1, this)" aria-label="Show previous videos">
           &#10094;
         </button>
 
-        <div id="video-track" class="video-track">
+        <div class="video-track">
           <div class="video-group">
             <div class="video-group-title"><i><span style="color: #facc15; margin-right: 6px;">!</span>REDUNDANT rearrangement</i></div>
             <video poster="" autoplay controls muted loop playsinline>
@@ -375,7 +390,7 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
 
         </div>
 
-        <button class="carousel-btn right-btn" onclick="scrollCarousel(1)">
+        <button class="carousel-btn right-btn" onclick="scrollCarousel(1, this)" aria-label="Show next videos">
           &#10095;
         </button>
 
@@ -392,11 +407,11 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
     
     <div class="content" style="margin-bottom: 2rem;">
       <h2>Example Results Analysis</h2>
-      <p>Here we show a sequential visualization of the hierarchical planning strategy executing a multi-target task with semantic conflict <i>(Level 4)</i> compared with baselines.</p>
+      <p>In this <strong>Level 4 (Semantic Conflict)</strong> task, the robot retrieves an egg yolk pastry and a croissant. SHARP relocates the blocking milk bottle, then grasps the croissant while avoiding the candy box. Retrieving the croissant satisfies one goal and clears access to the pastry. Baseline A cannot resolve the blocked access, while Baseline B unnecessarily relocates the candy box.</p>
     </div>
 
     <div style="text-align: center; margin-top: 20px;"> <!-- Center align the image container -->
-      <img src="./static/images/demo.jpg"
+      <img src="./static/images/demo.jpg" alt="Level 4 semantic-conflict task showing SHARP and the two baseline behaviors"
            style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0 auto;" >
            <!-- Make the image responsive and centered -->
     </div>
@@ -517,7 +532,7 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
 
 
 <script>
-  let isCarouselAnimating = false;
+  const animatingCarousels = new WeakSet();
   const carouselDurationMs = 520;
   const carouselEase = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
 
@@ -530,9 +545,9 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
     return groups[0].offsetWidth + gap;
   }
 
-  function scrollCarousel(direction) {
-    const track = document.getElementById('video-track');
-    if (!track || isCarouselAnimating) return;
+  function scrollCarousel(direction, button) {
+    const track = button.closest('.video-carousel-wrapper').querySelector('.video-track');
+    if (!track || animatingCarousels.has(track)) return;
 
     const groups = Array.from(track.getElementsByClassName('video-group'));
     if (groups.length <= 1) return;
@@ -540,7 +555,7 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
     const stepWidth = getCarouselStepWidth(track);
     if (!stepWidth) return;
 
-    isCarouselAnimating = true;
+    animatingCarousels.add(track);
 
     if (direction === 1) {
       const firstGroup = groups[0];
@@ -561,7 +576,7 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
         track.style.transform = 'translateX(0)';
         track.appendChild(firstGroup);
         track.removeChild(tempClone);
-        isCarouselAnimating = false;
+        animatingCarousels.delete(track);
       }, carouselDurationMs + 30);
       return;
     }
@@ -584,7 +599,7 @@ Furthermore, extensive real-world experiments demonstrate SHARP's effectiveness 
       track.style.transform = 'translateX(0)';
       track.removeChild(tempClone);
       track.insertBefore(lastGroup, track.firstElementChild);
-      isCarouselAnimating = false;
+      animatingCarousels.delete(track);
     }, carouselDurationMs + 30);
   }
 </script>
